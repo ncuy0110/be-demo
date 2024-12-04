@@ -10,6 +10,8 @@ class Task(BaseModel):
     title: str
     description: Optional[str] = None
     completed: bool = False
+    
+print("Hello todo list")
 
 # In-memory database to store tasks
 tasks_db: List[Task] = []
