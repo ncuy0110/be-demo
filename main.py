@@ -32,6 +32,7 @@ def read_tasks():
 def read_task(task_id: int):
     for task in tasks_db:
         if task.id == task_id:
+            print(task)
             return task
     raise HTTPException(status_code=404, detail="Task not found")
 
