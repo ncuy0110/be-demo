@@ -18,7 +18,7 @@ tasks_db: List[Task] = []
 @app.post("/tasks/", response_model=Task)
 def create_task(task: Task):
     tasks_db.append(task)
-    return task
+    return "Completed todo"
 
 # Read all tasks
 @app.get("/tasks/", response_model=List[Task])
