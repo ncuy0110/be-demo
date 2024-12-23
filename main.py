@@ -11,6 +11,8 @@ class Task(BaseModel):
     description: Optional[str] = None
     completed: bool = False
     
+print("Hello todo list")
+
 # In-memory database to store tasks
 tasks_db: List[Task] = []
 
@@ -18,7 +20,9 @@ tasks_db: List[Task] = []
 @app.post("/tasks/", response_model=Task)
 def create_task(task: Task):
     tasks_db.append(task)
-    return "Completed todo"
+    return {
+        "message": "test"
+    }
 
 # Read all tasks
 @app.get("/tasks/", response_model=List[Task])
@@ -30,7 +34,6 @@ def read_tasks():
 def read_task(task_id: int):
     for task in tasks_db:
         if task.id == task_id:
-            print(task)
             return task
     raise HTTPException(status_code=404, detail="Task not found")
 
